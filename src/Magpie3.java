@@ -4,14 +4,14 @@
  * <li>
  * Uses advanced search for keywords</li>
  * </ul>
- * 
+ *
  * @author Laurie White
  * @version April 2012
  */
 public class Magpie3 {
 	/**
 	 * Get a default greeting
-	 * 
+	 *
 	 * @return a greeting
 	 */
 	public String getGreeting() {
@@ -20,7 +20,7 @@ public class Magpie3 {
 
 	/**
 	 * Gives a response to a user statement
-	 * 
+	 *
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
@@ -36,6 +36,14 @@ public class Magpie3 {
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0) {
 			response = "Tell me more about your family.";
+		} else if (findKeyword(statement, "padjen") >= 0) {
+			response = "Padjen is a boomer";
+		} else if (findKeyword(statement, "hi") >= 0) {
+			response = "Ok boomer";
+		} else if (findKeyword(statement, "you") >= 0) {
+			response = "...your mom.";
+		} else if (findKeyword(statement, "stupid") >= 0) {
+			response = "No, youre stupid";
 		} else {
 			response = getRandomResponse();
 		}
@@ -46,7 +54,7 @@ public class Magpie3 {
 	 * Search for one word in phrase. The search is not case sensitive. This
 	 * method will check that the given goal is not a substring of a longer
 	 * string (so, for example, "I know" does not contain "no").
-	 * 
+	 *
 	 * @param statement
 	 *            the string to search
 	 * @param goal
@@ -80,11 +88,7 @@ public class Magpie3 {
 
 			// If before and after aren't letters, we've
 			// found the word
-			if (((before.compareTo("a") < 0) || (before.compareTo("z") > 0)) // before
-																				// is
-																				// not
-																				// a
-																				// letter
+			if (((before.compareTo("a") < 0) || (before.compareTo("z") > 0)) // before is not a letter
 					&& ((after.compareTo("a") < 0) || (after.compareTo("z") > 0))) {
 				return psn;
 			}
@@ -103,7 +107,7 @@ public class Magpie3 {
 	 * method will check that the given goal is not a substring of a longer
 	 * string (so, for example, "I know" does not contain "no"). The search
 	 * begins at the beginning of the string.
-	 * 
+	 *
 	 * @param statement
 	 *            the string to search
 	 * @param goal
@@ -117,7 +121,7 @@ public class Magpie3 {
 
 	/**
 	 * Pick a default response to use if nothing else fits.
-	 * 
+	 *
 	 * @return a non-committal string
 	 */
 	private String getRandomResponse() {
