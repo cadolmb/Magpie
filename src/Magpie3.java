@@ -64,7 +64,12 @@ public class Magpie3 {
 	 * @return the index of the first occurrence of goal in statement or -1 if
 	 *         it's not found
 	 */
+    private int iteration = 0;
 	private int findKeyword(String statement, String goal, int startPos) {
+        iteration += 1;
+        if (goal == "sister")
+            System.out.print("sister" + "   ");
+
 		String phrase = statement.trim().toLowerCase();
 		goal = goal.toLowerCase();
 
@@ -74,6 +79,9 @@ public class Magpie3 {
 
 		// Refinement--make sure the goal isn't part of a
 		// word
+
+        System.out.print(iteration + "   " + psn + "   ");
+
 		while (psn >= 0) {
 			// Find the string of length 1 before and after
 			// the word
@@ -85,6 +93,7 @@ public class Magpie3 {
 				after = phrase.substring(psn + goal.length(),
 						psn + goal.length() + 1);
 			}
+            System.out.println(before + "   " + after);
 
 			// If before and after aren't letters, we've
 			// found the word
